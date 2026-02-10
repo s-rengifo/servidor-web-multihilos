@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>FAKE Facebook</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: #f0f2f5;
+        }
+
+        /* HEADER */
+        header {
+            background: #1877f2;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        header input {
+            width: 300px;
+            padding: 8px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+        }
+
+        /* LAYOUT */
+        .container {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 250px;
+            padding: 20px;
+        }
+
+        .sidebar div {
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .sidebar div:hover {
+            background: #e4e6eb;
+        }
+
+        /* FEED */
+        .feed {
+            flex: 1;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .post-box, .post {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .post-box input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        .post-header {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .post-actions {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+            color: #65676b;
+            cursor: pointer;
+        }
+
+        .post-actions div:hover {
+            text-decoration: underline;
+        }
+
+        /* RIGHT BAR */
+        .rightbar {
+            width: 250px;
+            padding: 20px;
+            color: #65676b;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>facebook</h1>
+    <input type="text" placeholder="Buscar en Facebook">
+</header>
+
+<div class="container">
+
+    <div class="sidebar">
+        <div>👤 Mi perfil</div>
+        <div>📰 Noticias</div>
+        <div>👥 Amigos</div>
+        <div>📸 Fotos</div>
+        <div>⚙️ Configuración</div>
+    </div>
+
+    <div class="feed">
+        <div class="post-box">
+            <input id="postInput" type="text" placeholder="¿Qué estás pensando?" onkeydown="addPost(event)">
+        </div>
+
+        <div id="posts"></div>
+    </div>
+
+    <div class="rightbar">
+        <h4>Contactos</h4>
+        <p>Ana</p>
+        <p>Carlos</p>
+        <p>María</p>
+    </div>
+
+</div>
+
+<script>
+    function addPost(e) {
+        if (e.key === "Enter" && e.target.value.trim() !== "") {
+            const post = document.createElement("div");
+            post.className = "post";
+            post.innerHTML = `
+            <div class="post-header">Usuario</div>
+            <div>${e.target.value}</div>
+            <div class="post-actions">
+                <div>👍 Me gusta</div>
+                <div>💬 Comentar</div>
+                <div>↪️ Compartir</div>
+            </div>
+        `;
+            document.getElementById("posts").prepend(post);
+            e.target.value = "";
+        }
+    }
+</script>
+
+</body>
+</html>
