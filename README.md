@@ -10,6 +10,10 @@ Este entrega consiste en la implementación de un servidor web básico utilizand
 
 ---
 
+### Optimización con ThreadPool
+Se ha implementado el patrón **Worker Thread** utilizando `java.util.concurrent.ExecutorService`.
+En lugar de crear un hilo por cada conexión, lo cual es costoso en términos de CPU y memoria, el servidor mantiene un grupo fijo de hilos reutilizables.
+
 ## Cumplimiento de Requerimientos
 
 Aqui se detalla cómo el código cumple con los puntos solicitados en el enunciado de la tarea:
